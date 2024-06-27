@@ -1,12 +1,15 @@
+package br.edu.up;
+
 import java.io.*;
 import java.util.*;
-import br.edu.up.*;
 
-public class AlunoProcessor {
+public class AlunoPrograma {
     public static void main(String[] args) {
         List<Aluno> listaDeAlunos = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("alunos.csv"))) {
+        String caminhoCSV = "src/br/edu/up/resources/alunos.csv";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(caminhoCSV))) {
             String linha;
             br.readLine();
 
@@ -45,7 +48,8 @@ public class AlunoProcessor {
         }
         double mediaNotas = somaNotas / totalAlunos;
 
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("resumo.csv"))) {
+        String caminhoResumoCSV = "src/br/edu/up/resources/resumo.csv";
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(caminhoResumoCSV))) {
             bw.write("Quantidade de alunos;Aprovados;Reprovados;Menor nota;Maior nota;Média das notas\n");
             bw.write(totalAlunos + ";" + aprovados + ";" + reprovados + ";" +
                     String.format("%.1f", menorNota) + ";" +

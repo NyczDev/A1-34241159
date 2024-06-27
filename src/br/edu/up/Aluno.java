@@ -23,4 +23,3 @@ public class Aluno {
         return nota;
     }
 }
-
